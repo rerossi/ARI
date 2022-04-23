@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>     
+        #dropzone{
+            width: 250px;
+            height: 250px;
+        }
+        .dropable {
+            border: 5px solid black;
+        }
+
+        .dropable-over {
+            border: 10px dashed red;
+        }
+        img{
+            width: 250px;
+        }
+    </style>    
+
+</head>
+
+<body>
+    <img draggable="true" id="gato" src="https://www.petlove.com.br/images/breeds/192403/profile/original/sphynx-p.jpg?1532626992">
+
+    <div id="dropzone" class="dropable" ></div>
+
+    
+    <script> 
+        let image = document.getElementById("gato");
+        let dropzone = document.getElementById("dropzone")
+        
+        //quando comeca a arrastar um elemnto
+        image.addEventListener("dragstart", (event) => {
+            event.dataTransfer.setData("imagem", event.target.id)
+            console.log("drag start");
+        });
+
+        //quando segura um elemnto em cima de outro
+        dropzone.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            console.log("drag over");
+        });
+
+        //quando solta um elemnto em cima de outro
+        dropzone.addEventListener("drop", (event) => {
+            let elementId = event.dataTransfer.getData("imagem");
+            let element = document.getElementById(elementId);
+            
+            dropzone.classList.remove('dropable-over');
+            event.target.appendChild(element);
+
+            console.log("elemntId:", elementId);
+            console.log("drop");
+        });
+
+        //quando um elemento entra dentro de outro
+        dropzone.addEventListener("dragenter", () => {
+            dropzone.classList.add('dropable-over');
+            console.log("drag enter");
+        });
+
+        //quando um elemento sai de cima do outro
+        dropzone.addEventListener("dragleave", () => {
+            dropzone.classList.remove('dropable-over');
+            console.log("dragleave");
+        });
+    </script>
+</body>
+</html>

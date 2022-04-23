@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <video id="video" src="movie.mp4"></video>
+    <button onclick="iniciar()">play</button>
+    <button onclick="pausar()">pause</button>
+    <meter id="progress"></meter>
+
+
+    <script>
+        let coelho = document.getElementById("video");
+        let progress = document.getElementById("progress");
+    
+        function iniciar(){
+            
+            coelho.play();
+        };
+    
+        function pausar(){
+            
+            coelho.pause();
+        };
+    
+        
+    
+        function progresso (){
+      
+        };
+    
+        
+        coelho.ontimeupdate = function(){
+    
+            progress.value = coelho.currentTime;
+        };
+    
+        coelho.onloadedmetadata = function(){
+    
+            progress.max = coelho.duration;
+        };
+    
+    
+    </script>  
+    
+
+    
+</body>
+
+
+
+
+</html>

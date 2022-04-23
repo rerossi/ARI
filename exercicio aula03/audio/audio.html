@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <audio id="som" src="birds.ogg" type="audio/ogg"></audio>
+      <br><br>
+      <img id="start" onclick="iniciar()" src="malvado.jpg">
+      <img id="pausar" style="display:none" onclick="pausar()" src="minions.jpg" alt="">
+      
+    
+    
+      <script>
+        let audio = document.getElementById("som");
+        let imagem = document.getElementById("start");
+        let stop = document.getElementById("pausar");
+    
+    
+       
+    
+        function iniciar() {
+          audio.play();
+          imagem.src = "loading.gif"
+        }
+
+        setTimeout(() => {
+        audio.oncanplay()
+      }, 8000);
+
+     
+    
+        function pausar(){
+          audio.pause();
+        
+        }
+      </script>
+    
+</body>
+</html>
